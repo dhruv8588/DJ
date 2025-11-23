@@ -14,39 +14,30 @@
 
 </head>
 <body>
-    <div class="container pt-5">
-        <h1>Employee List</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td>John</td>
-                <td>Doe</td>
-                <td>@social</td>
-                </tr>
-            </tbody>
-        </table>
-    <div class="container pt-5">
+   <table class="table table-striped">
+        <thead>
+            <tr>
+            <th>S.No</th>
+            <th>Full Name</th>
+            <th>Designation</th>
+            <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in employees %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>
+                    <a href="{% url 'employee_detail' m.id %}">
+                        {{ m.first_name }} {{ m.last_name }}
+                    </a>
+                </td>
+                <td>{{ m.designation }}</td>
+                <td>{{ m.phone_number }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 </body>
 </html>
